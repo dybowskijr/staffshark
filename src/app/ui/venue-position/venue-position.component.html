@@ -1,0 +1,5 @@
+<div [ngClass]="{ 'main': true, 'assigned': assignee && assignee.assignmentStatus == assignmentStatus.Assigned}" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
+    <div>Assignee: <span *ngIf="assignee">{{ assignee.displayName }}</span></div>
+    <div>Location: <span *ngIf="placement">{{ placement.displayName }}</span></div>
+    <div>Order of Finish</div>
+</div>

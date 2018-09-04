@@ -5,10 +5,10 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MainDisplayComponent } from './ui/main-display/main-display.component';
 import { StaffListComponent } from './ui/staff-list/staff-list.component';
-import { MatSidenavModule, MatListModule, MatRadioModule } from '@angular/material';
+import { MatSidenavModule, MatListModule, MatRadioModule, MatButtonModule } from '@angular/material';
 import { DraggableListItemComponent } from './ui/draggable-list-item/draggable-list-item.component';
-import { PositionLayoutComponent } from './ui/position-layout/position-layout.component';
-import { PositionComponent } from './ui/position/position.component';
+import { VenuePositionLayoutComponent } from './ui/venue-position-layout/venue-position-layout.component';
+import { VenuePositionComponent } from './ui/venue-position/venue-position.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +16,15 @@ import { PositionComponent } from './ui/position/position.component';
     MainDisplayComponent,
     StaffListComponent,
     DraggableListItemComponent,
-    PositionLayoutComponent,
-    PositionComponent
+    VenuePositionLayoutComponent,
+    VenuePositionComponent
   ],
     imports: [
-        BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule, MatRadioModule
+        BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule, MatRadioModule, MatButtonModule
+
     ],
     exports: [
-        BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule, MatRadioModule
+        BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule, MatRadioModule, MatButtonModule
     ],
   providers: [],
   bootstrap: [AppComponent]

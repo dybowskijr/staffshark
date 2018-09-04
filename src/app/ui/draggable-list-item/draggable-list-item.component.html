@@ -1,3 +1,5 @@
-<mat-list-item class="default" role="listitem" id="{{staffMember.id}}"
-    draggable="true" (dragstart)="dragstart_handler($event)">{{ staffMember.displayName }}
+<mat-list-item
+    [ngClass]="{'default': true, 'available': staffMember.assignmentStatus == assignmentStatus.Available, 'assigned': staffMember.assignmentStatus == assignmentStatus.Assigned }" 
+    role="listitem" id="{{staffMember.id}}"
+    [draggable]="isDraggable()" (dragstart)="dragstart_handler($event)">{{ staffMember.displayName }}
 </mat-list-item>

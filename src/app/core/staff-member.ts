@@ -1,5 +1,8 @@
 import { Certification } from "./certification";
 
+
+export enum AssignmentStatus {Unavailable, Available, Assigned};
+
 export class StaffMember {
 
     private _id?: string;
@@ -7,6 +10,7 @@ export class StaffMember {
     displayName: string;
     private _certifications?: Certification[];
     private static  nextId: number = 1;
+    private _assignmentStatus: AssignmentStatus = AssignmentStatus.Available;
 
     constructor(name: string, displayName: string, certifications: Certification[] = null) {
         this.name = name;
@@ -25,6 +29,14 @@ export class StaffMember {
 
     get id(): string {
         return 'staffmember_' + this._id;
+    }
+
+    get assignmentStatus(): AssignmentStatus {
+        return this._assignmentStatus;
+    }
+
+    set assignmentStatus(assignmentStatus: AssignmentStatus) {
+        this._assignmentStatus = assignmentStatus;
     }
 
 }

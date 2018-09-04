@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StaffMember } from '../../core/staff-member';
+import { StaffMember, AssignmentStatus } from '../../core/staff-member';
 
 @Component({
     selector: 'app-draggable-list-item',
@@ -9,13 +9,20 @@ import { StaffMember } from '../../core/staff-member';
 export class DraggableListItemComponent implements OnInit {
 
     @Input() staffMember: StaffMember;
+
+    assignmentStatus = AssignmentStatus; //needed to pull enum into scope
+
     constructor() { }
 
     ngOnInit() {
     }
 
+    isDraggable(): boolean {
+        return this.staffMember && this.staffMember.assignmentStatus == this.assignmentStatus.Available;
+    }
+
     dragstart_handler(ev) {
-        console.log("dragStart");
+        //console.log("dragStart");
         // Add the target element's id to the data transfer object
         ev.dataTransfer.setData("text/plain", ev.target.id);
     }

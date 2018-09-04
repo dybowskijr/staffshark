@@ -5,13 +5,16 @@ export class Placement {
     displayName: string;
     shortName: string;
 
+    private static nextId: number = 0;
+
     constructor(displayName: string, shortName: string, x: number, y: number) {
         this.displayName = displayName;
         this.shortName = shortName;
         this.coordinates = new Coordinates(x, y);
+        this._id = 'placement_' + Placement.nextId.toString();
+        Placement.nextId++;
     }
 }
-
 
 export class Coordinates {
     x: number;

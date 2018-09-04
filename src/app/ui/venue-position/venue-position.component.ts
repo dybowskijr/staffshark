@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { StaffMember } from '../../core/staff-member';
+import { Component, OnInit, Input } from '@angular/core';
+import { StaffMember, AssignmentStatus } from '../../core/staff-member';
 import { Role } from '../../core/role';
 import { StaffingService } from '../../service/staffing.service';
 import { Placement } from '../../core/placement';
 
 @Component({
-    selector: 'app-position',
-    templateUrl: './position.component.html',
-    styleUrls: ['./position.component.css']
+    selector: 'app-venue-position',
+    templateUrl: './venue-position.component.html',
+    styleUrls: ['./venue-position.component.css']
 })
-export class PositionComponent implements OnInit {
+export class VenuePositionComponent implements OnInit {
+
+    @Input() placement: Placement;
 
     private _assignee?: StaffMember = null;
-    private _location?: Placement = null;
     private _role?: Role = null;
+    assignmentStatus = AssignmentStatus;
+
 
     constructor(private staffingService: StaffingService) { }
 
@@ -33,7 +36,9 @@ export class PositionComponent implements OnInit {
         //ev.target.appendChild(document.getElementById(data));
         // TODO: may need to differentiate role/location/staffer
         this.staffingService.getStaffMember(data).subscribe(
-            sm => {this._assignee = sm}
+            sm => {sm.assignmentStatus = AssignmentStatus.Assigned;
+                   this._assignee = sm;
+                }
         );
     }
 
