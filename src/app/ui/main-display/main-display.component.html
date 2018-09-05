@@ -1,5 +1,21 @@
-<div class="main-page" >
-    <div style="display: inline-block; width: 200px; vertical-align: top"><app-staff-list></app-staff-list></div>
-    <app-venue-position-layout 
-      style="display: inline-block; border: thin solid black">Temp</app-venue-position-layout>
+<div class="main-page">
+    <div style="display: inline-block; width: 200px; vertical-align: top">
+        <app-staff-list></app-staff-list>
+    </div>
+
+    <!-- Sessions with the session having 0-n subVenues  -->
+    <mat-tab-group style="display: inline-block; border: thin solid black" (selectedTabChange)="addSessionClick($event);">
+        <mat-tab label="{{session.name}}" (click)="addSession(session);" *ngFor="let session of sessions">
+            <mat-tab-group>
+                <mat-tab label="{{subVenue.name}}" *ngFor="let subVenue of session.subVenues">
+                    <app-venue-position-layout [sessionSubVenue]=""></app-venue-position-layout>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Add Session">
+            <div>Add a session placeholder.</div>
+        </mat-tab>
+    </mat-tab-group>
+    
+    <app-role-list style="display: inline-block; width: 200px; height: 75px; vertical-align: top"></app-role-list>
 </div>

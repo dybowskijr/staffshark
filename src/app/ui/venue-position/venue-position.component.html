@@ -1,5 +1,16 @@
-<div [ngClass]="{ 'main': true, 'assigned': assignee && assignee.assignmentStatus == assignmentStatus.Assigned}" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
-    <div>Assignee: <span *ngIf="assignee">{{ assignee.displayName }}</span></div>
-    <div>Location: <span *ngIf="placement">{{ placement.displayName }}</span></div>
-    <div>Order of Finish</div>
-</div>
+
+<mat-card [ngClass]="{ 'main': true, 'assigned': assignee && assignee.assignmentStatus == assignmentStatus.Assigned}" [id]="placement.id"
+    [style.top.px]="placement.coordinates.y" [style.left.px]="placement.coordinates.x" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);"
+    (dragstart)="dragstart_handler($event);"
+    [draggable]="true">
+    <mat-card-content>
+        <div>Assignee: <span *ngIf="assignee">{{ assignee.displayName }}</span><br />
+            Location: <span *ngIf="placement">{{ placement.displayName }}</span><br />
+            Role: <span *ngIf="role">{{role.displayName}}</span></div>
+    </mat-card-content>
+<mat-card-actions>
+    <mat-icon (click)="clearAssignee($event);" title="Clear Assignee">build</mat-icon>
+    <mat-icon>add_circle_outline</mat-icon>
+</mat-card-actions>
+
+</mat-card>

@@ -1,7 +1,8 @@
-<div class="main-area">
+<div id="venue_0" class="main-area" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
     <app-venue-position 
         *ngFor="let placement of placements" [placement]="placement"></app-venue-position>
 </div>
 <div>
-    <button mat-button color="primary">Add Location</button>
+    <button mat-button color="primary" (click)="addLocation($event);">Add Location</button>
+    <button mat-button color="primary" (click)="openWizard($event);">Wizard</button>
 </div>

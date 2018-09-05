@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Create an Assignment Sheet</h1>
+<form>
+<div mat-dialog-content style="height: 200px" [formGroup]="formGroup">Lanes:
+    <mat-radio-group (change)="onChange()" formControlName="lanes">
+        <mat-radio-button style="padding: 0 10px" [labelPosition]="'before'" *ngFor="let laneChoice of laneChoices" [value]="laneChoice">
+            {{laneChoice}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <br /><br />1 Over: 
+    <mat-radio-group  formControlName="over">
+        <mat-radio-button style="padding: 0 10px" [labelPosition]="'before'" *ngFor="let overChoice of overChoices" [value]="overChoice">
+            {{overChoice}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div></form>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick();">Cancel</button>
+    <button mat-button (click)="closeDialog()" [disabled]="!formGroup.valid">Create</button>
+</div>
