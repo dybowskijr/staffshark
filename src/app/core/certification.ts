@@ -2,7 +2,7 @@ export class Certification {
 
     private _id?: string;
     name: string;
-    shortName: string;
+    shortName: string;  // this is 'supposed' to be unique
     fullName: string;
 
     constructor(name: string, shortName: string, fullName: string) {
@@ -10,8 +10,4 @@ export class Certification {
         this.shortName = shortName;
         this.fullName = fullName;
     }
-
-
-
-    
 }

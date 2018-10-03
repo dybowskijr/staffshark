@@ -1,8 +1,9 @@
-import { Role } from "./role";
-import { StaffMember } from "./staff-member";
+import { Role } from './role';
+import { StaffMember } from './staff-member';
 
 export class Placement {
 
+    private static nextId = 0;
     private _id: number;
     private subVenueId?: string; // tie-back to 'parent'
     coordinates: Coordinates;
@@ -11,7 +12,6 @@ export class Placement {
     private _roles: string[];
     private _assignees: string[];
 
-    private static nextId: number = 0;
 
     constructor(displayName: string, shortName: string, x: number, y: number) {
         this.displayName = displayName;
@@ -30,8 +30,8 @@ export class Placement {
 
     removeRole(id: string): void {
         this._roles = this._roles.filter(role => role !== id);
-    } 
-    
+    }
+
     addStaffMember(id: string): void {
         this._assignees.push(id);  // TODO: may need to check for duplicate...
     }

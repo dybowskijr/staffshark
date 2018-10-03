@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { Placement } from '../../core/placement';
-import { PlacementService } from '../../service/placement.service';
 import { MatDialog } from '@angular/material';
 import { AddTypeDialogComponent } from '../add-type-dialog/add-type-dialog.component';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
-import { SessionSubVenue } from '../../core/session-sub-venue';
+import { SubVenue } from '../../core/sub-venue';
 
 @Component({
     selector: 'app-venue-position-layout',
@@ -13,18 +12,24 @@ import { SessionSubVenue } from '../../core/session-sub-venue';
 })
 export class VenuePositionLayoutComponent implements OnInit {
 
-    @Input() sessionSubVenue: SessionSubVenue;
+    @Input() subVenue: SubVenue;
 
-    private _placements: Placement[];
+    bgImage = '';
 
-    constructor(private placementService: PlacementService, public dialog: MatDialog) { }
+    // private _placements: Placement[];
+
+    constructor(public dialog: MatDialog) { }
 
     ngOnInit() {
-        this.placementService.getPlacements().subscribe(
-            placements => { this._placements = placements; },
-            error => { console.log(error); },
-            () => { }
-        );
+        // this.placementService.getPlacements().subscribe(
+        //     placements => { this._placements = placements; },
+        //     error => { console.log(error); },
+        //     () => { }
+        // );
+        console.info('subVenue: ' + JSON.stringify(this.subVenue));
+        if(this.subVenue.diagram) {
+            this.bgImage = 'url(' + this.subVenue.diagram + ')';
+        }
     }
 
     addLocation(ev: Event) {
@@ -35,7 +40,7 @@ export class VenuePositionLayoutComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
             console.log('Closed Dialog: result = ' + result);
-            this._placements.push(new Placement(result, result, 300, 500));
+            this.subVenue.placements.push(new Placement(result, result, 300, 500));
 
         });
     }
@@ -52,10 +57,6 @@ export class VenuePositionLayoutComponent implements OnInit {
 
         });
      }
-
-    get placements(): Placement[] {
-        return this._placements;
-    }
 
     drop_handler(ev) {
         ev.preventDefault();
@@ -74,8 +75,8 @@ export class VenuePositionLayoutComponent implements OnInit {
             // current mouse location (in venue_# div) - drag start mouse position offset from draggable's top/left
             const top = ev.offsetY - ev.dataTransfer.getData('text/y');
             const left = ev.offsetX - ev.dataTransfer.getData('text/x');
-            if(top >= 0 && top <= venueView.clientHeight && left >= 0 && left <= venueView.clientWidth) {
-                const placement = this._placements.find(p => p.id === dropId);
+            if (top >= 0 && top <= venueView.clientHeight && left >= 0 && left <= venueView.clientWidth) {
+                const placement = this.subVenue.placements.find(p => p.id === dropId);
                 placement.coordinates.x = left;
                 placement.coordinates.y = top;
             }

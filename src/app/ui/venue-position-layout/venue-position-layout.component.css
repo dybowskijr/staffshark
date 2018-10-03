@@ -5,4 +5,7 @@
     top: 0px;
     left: 0px;
     position: relative;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
 }

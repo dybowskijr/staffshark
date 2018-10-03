@@ -15,14 +15,14 @@ export class WizardDialogComponent implements OnInit {
     over: number;
     formGroup: FormGroup;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<WizardDialogComponent>, private formBuilder: FormBuilder) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+      public dialogRef: MatDialogRef<WizardDialogComponent>, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
         this.formGroup = this.formBuilder.group({
             lanes: ['', Validators.required],
             over: ['', Validators.required]
        });
-       
     }
 
     onCancelClick(): void {
@@ -34,20 +34,19 @@ export class WizardDialogComponent implements OnInit {
     }
 
     onChange(): void {
-        console.log("changed!!");
+        console.log('changed!!');
     }
 
     get overChoices(): number[] {
-        let retVal: number[] = [];
-        for(let i = this.formGroup.controls.lanes.value; i > 0; i--) {
-            if (this.formGroup.controls.lanes.value % i == 0) {
-
+        const retVal: number[] = [];
+        for (let i = this.formGroup.controls.lanes.value; i > 0; i--) {
+            if (this.formGroup.controls.lanes.value % i === 0) {
                 retVal.push(i);
             }
         }
-        console.log("get overChoices(): retVal:" + retVal + "; lanes.value: " + this.formGroup.controls.lanes.value);
+        console.log('get overChoices(): retVal:' + retVal + '; lanes.value: ' +
+        this.formGroup.controls.lanes.value);
         return retVal;
     }
-
 
 }

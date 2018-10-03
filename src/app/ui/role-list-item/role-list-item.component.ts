@@ -14,10 +14,18 @@ export class RoleListItemComponent implements OnInit {
 
     ngOnInit() {
     }
-    
+
     dragstart_handler(ev) {
-        //console.log("dragStart");
+        // console.log("dragStart");
         // Add the target element's id to the data transfer object
-        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dataTransfer.setData('text/plain', ev.target.id);
+    }
+
+    getCertShortList(): string {
+        let retVal = 'None';
+        if (this.role.requiredCertifications) {
+            retVal =  this.role.requiredCertifications.map(cert => cert.shortName).join(', ');
+        }
+        return retVal;
     }
 }

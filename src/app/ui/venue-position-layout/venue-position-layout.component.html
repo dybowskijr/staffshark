@@ -1,6 +1,7 @@
-<div id="venue_0" class="main-area" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
+<div id="venue_0" class="main-area" [style.background-image]="bgImage" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
+
     <app-venue-position 
-        *ngFor="let placement of placements" [placement]="placement"></app-venue-position>
+        *ngFor="let placement of subVenue.placements" [placement]="placement"></app-venue-position>
 </div>
 <div>
     <button mat-button color="primary" (click)="addLocation($event);">Add Location</button>

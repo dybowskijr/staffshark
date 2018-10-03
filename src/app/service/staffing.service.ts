@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StaffMember } from '../core/staff-member';
 import { Observable, of } from 'rxjs';
+import { Certification } from '../core/certification';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable, of } from 'rxjs';
 export class StaffingService {
     private _staffMembers: StaffMember[];
   constructor() {
-      this._staffMembers =this.mockStaff(); 
+      this._staffMembers =this.mockStaff();
    }
 
     public get staffMembers(): StaffMember[] {
@@ -23,13 +24,14 @@ export class StaffingService {
     }
 
     getStaffMember(id: string): Observable<StaffMember> {
-        return of(this._staffMembers.find(staffMember => staffMember.id == id));
+        return of(this._staffMembers.find(staffMember => staffMember.id === id));
     }
 
 
     private mockStaff(): StaffMember[] {
         return [
-            new StaffMember('Dybowski, Dennis', 'Dennis D'),
+            new StaffMember('Dybowski, Dennis', 'Dennis D', [new Certification('Starter', 'SR', 'Starter'),
+                new Certification('Stroke/Turn', 'ST', 'Stroke/Turn Judge') ]),
             new StaffMember('John White', 'J Dub'),
             new StaffMember('Liz Garling', 'Liz G')
         ];

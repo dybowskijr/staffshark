@@ -1,7 +1,7 @@
-import { Certification } from "./certification";
+import { Certification } from './certification';
 
 export class Role {
-    private static nextId: number = 0;
+    private static nextId = 0;
 
     private _id: number;
 
@@ -15,12 +15,12 @@ export class Role {
         this._name = name;
         this._displayName = displayName;
         this.requiredCertifications = requiredCertifications;
-    }    
-    
-    public get id(): string {
-        return "role_" + this._id.toString();
     }
-    
+
+    public get id(): string {
+        return 'role_' + this._id.toString();
+    }
+
     public get displayName(): string {
         return this._displayName;
     }
@@ -28,6 +28,8 @@ export class Role {
         this._displayName = value;
     }
 
-
+    public get requiresCertifications(): boolean {
+        return this.requiredCertifications && this.requiredCertifications.length > 0;
+    }
 
 }

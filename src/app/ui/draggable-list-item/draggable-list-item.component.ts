@@ -10,7 +10,7 @@ export class DraggableListItemComponent implements OnInit {
 
     @Input() staffMember: StaffMember;
 
-    assignmentStatus = AssignmentStatus; //needed to pull enum into scope
+    assignmentStatus = AssignmentStatus; // needed to pull enum into scope
 
     constructor() { }
 
@@ -18,12 +18,12 @@ export class DraggableListItemComponent implements OnInit {
     }
 
     isDraggable(): boolean {
-        return this.staffMember && this.staffMember.assignmentStatus == this.assignmentStatus.Available;
+        return this.staffMember && this.staffMember.assignmentStatus === this.assignmentStatus.Available;
     }
 
     dragstart_handler(ev) {
-        //console.log("dragStart");
+        // console.log("dragStart");
         // Add the target element's id to the data transfer object
-        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dataTransfer.setData('text/plain', ev.target.id);
     }
 }

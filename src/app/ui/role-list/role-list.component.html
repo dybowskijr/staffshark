@@ -1,3 +1,6 @@
 <mat-list role="list">
     <app-role-list-item *ngFor="let role of roles" [role]="role"></app-role-list-item>
+    <mat-list-item class="default" role="listitem" id="role_new" [draggable]="false" (click)="addRole();">
+        Add Role
+    </mat-list-item>
 </mat-list>

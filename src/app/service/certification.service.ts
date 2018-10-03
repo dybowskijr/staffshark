@@ -13,12 +13,12 @@ export class CertificationService {
       this._certifications = this.mockCertifications();
    }
 
-   getCertifications(): Observable<Certification[]> {
+   getAvailableCertifications(): Observable<Certification[]> {
        return of(this._certifications);
    }
 
     private mockCertifications(): Certification[] {
-        return [ 
+        return [
             new Certification('Referee', 'REF', 'Referee'),
             new Certification('Starter', 'SR', 'Starter'),
             new Certification('Stroke/Turn', 'ST', 'Stroke and Turn Judge'),

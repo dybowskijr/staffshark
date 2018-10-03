@@ -70,10 +70,13 @@ export class VenuePositionComponent implements OnInit {
         return this._role;
     }
 
-    private clearAssignee() {
+    private clear() {
         if(this._assignee) {
             this._assignee.assignmentStatus = AssignmentStatus.Available;
             this._assignee = null;
+        }
+        if(this._role) {
+            this._role = null;
         }
     }
 }

@@ -5,7 +5,7 @@ export class SessionSubVenue {
     private _subVenue: string;
     private _positions: Placement[];
 
-    constructor(session: string; subVenue: string) {
+    constructor(session: string, subVenue: string) {
         this._session = session;
         this._subVenue = subVenue;
     }

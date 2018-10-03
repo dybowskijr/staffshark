@@ -1,3 +1,5 @@
 <mat-list role="list">
     <app-draggable-list-item *ngFor="let staffMember of staff" [staffMember]="staffMember"></app-draggable-list-item>
-</mat-list>
+    <mat-list-item class="default" role="listitem" id="role_new" [draggable]="false" (click)="addStaffmember();">
+        Add Staffmember
+    </mat-list-item></mat-list>

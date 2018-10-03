@@ -2,21 +2,22 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
+
 @Component({
-    selector: 'app-add-session-dialog',
-    templateUrl: './add-session-dialog.component.html',
-    styleUrls: ['./add-session-dialog.component.css']
+  selector: 'app-add-location-dialog',
+  templateUrl: './add-location-dialog.component.html',
+  styleUrls: ['./add-location-dialog.component.css']
 })
-export class AddSessionDialogComponent implements OnInit {
+export class AddLocationDialogComponent implements OnInit {
 
     formGroup: FormGroup;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-        public dialogRef: MatDialogRef<AddSessionDialogComponent>, private formBuilder: FormBuilder) { }
+        public dialogRef: MatDialogRef<AddLocationDialogComponent>, private formBuilder: FormBuilder) { }
 
     ngOnInit() {
         this.formGroup = this.formBuilder.group({
-            sessionName: ['', Validators.required]
+            locationName: ['', Validators.required]
         });
     }
 
@@ -25,7 +26,8 @@ export class AddSessionDialogComponent implements OnInit {
     }
 
     onOkClick(): void {
-        this.dialogRef.close({sessionName: this.formGroup.controls.sessionName.value});
+        this.dialogRef.close({ locationName: this.formGroup.controls.locationName.value });
     }
+
 
 }

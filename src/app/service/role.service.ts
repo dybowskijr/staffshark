@@ -15,10 +15,10 @@ export class RoleService {
     }
 
     mockRoles(): Role[] {
-        return [ 
-            new Role("Starter", "Starter", null),
-            new Role("Stroke/Turn", "Stroke/Turn", null),
-            new Role("Referee", "Referee", null)
+        return [
+            new Role('Starter', 'Starter', null),
+            new Role('Stroke/Turn', 'Stroke/Turn', [new Certification('Stroke/Turn', 'ST', 'Stroke and Turn Judge Certification')]),
+            new Role('Referee', 'Referee', null)
         ];
     }
 

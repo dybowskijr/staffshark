@@ -3,7 +3,9 @@ import { Session } from '../../core/session';
 import { Occasion } from '../../core/occasion';
 import { OccasionService } from '../../service/occasion.service';
 import { MatTabChangeEvent, MatDialog } from '@angular/material';
-import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
+import { AddSessionDialogComponent } from '../add-session-dialog/add-session-dialog.component';
+import { AddLocationDialogComponent } from '../add-location-dialog/add-location-dialog.component';
+import { SubVenue } from '../../core/sub-venue';
 
 @Component({
     selector: 'app-main-display',
@@ -12,7 +14,10 @@ import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component'
 })
 export class MainDisplayComponent implements OnInit {
 
+
+    //  TODO: make sure tab is set to the added session tab.
     private _occasion: Occasion;
+    selectedSession: number;
 
     constructor(private occasionService: OccasionService, public dialog: MatDialog) {
     }
@@ -22,23 +27,29 @@ export class MainDisplayComponent implements OnInit {
     }
 
     get sessions(): Session[] {
-        console.log('count: ' + this._occasion._sessions.length);
         return this._occasion._sessions;
     }
 
     addSessionClick(event: MatTabChangeEvent): void {
         if (event.tab.textLabel === 'Add Session') {
-            const dialogRef = this.dialog.open(WizardDialogComponent, {
-                height: '400px',
-                width: '500px',
-                data: { type: 'Location' }
-            });
+            const dialogRef = this.dialog.open(AddSessionDialogComponent);
             dialogRef.afterClosed().subscribe(result => {
-                console.log('Closed Dialog: result = ' + JSON.stringify(result));
-                // this._placements.push(new Placement(result, result, 300, 500));
-
+                if (result) {
+                    this._occasion._sessions.push(new Session(result.sessionName));
+                    // this.selectedSession = this._occasion._sessions.length - 1;
+                }
             });
-         }
+        }
     }
 
+    addSubVenueClick(event: MatTabChangeEvent): void {
+        if (event.tab.textLabel === 'Add Location') {
+            const dialogRef = this.dialog.open(AddLocationDialogComponent);
+            dialogRef.afterClosed().subscribe(result => {
+                if (result) {
+                    this._occasion._sessions[0]._subVenues.push(new SubVenue(result.locationName, null));
+                }
+            });
+        }
+    }
 }

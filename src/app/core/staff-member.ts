@@ -1,15 +1,15 @@
-import { Certification } from "./certification";
+import { Certification } from './certification';
 
 
 export enum AssignmentStatus {Unavailable, Available, Assigned};
 
 export class StaffMember {
 
+    private static  nextId = 1;
     private _id?: string;
     name: string;
     displayName: string;
     private _certifications?: Certification[];
-    private static  nextId: number = 1;
     private _assignmentStatus: AssignmentStatus = AssignmentStatus.Available;
 
     constructor(name: string, displayName: string, certifications: Certification[] = null) {
@@ -27,6 +27,10 @@ export class StaffMember {
         this._certifications = value;
     }
 
+    hasCertifications(): boolean {
+        return this.certifications && this.certifications.length > 0;
+    }
+
     get id(): string {
         return 'staffmember_' + this._id;
     }
@@ -37,6 +41,14 @@ export class StaffMember {
 
     set assignmentStatus(assignmentStatus: AssignmentStatus) {
         this._assignmentStatus = assignmentStatus;
+    }
+
+    getCertShortList(): string {
+        let retVal = 'None';
+        if(this._certifications) {
+            retVal = this._certifications.map( cert => cert.shortName).join(', ');
+        }
+        return retVal;
     }
 
 }

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Add a Location</h1>
+<div mat-dialog-content [formGroup]="formGroup">
+    <mat-form-field>
+        <input matInput placeholder="Location Name" (keyup.enter)="formGroup.valid && onOkClick();"
+        formControlName="locationName">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick();">Cancel</button>
+    <button mat-button (click)="onOkClick();" [disabled]="!formGroup.valid">Add</button>
+</div>
