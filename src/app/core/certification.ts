@@ -10,4 +10,8 @@ export class Certification {
         this.shortName = shortName;
         this.fullName = fullName;
     }
+
+    clone(): Certification {
+        return new Certification(this.name, this.shortName, this.fullName);
+    }
 }

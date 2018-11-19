@@ -3,24 +3,39 @@ import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@ang
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CertificationService } from '../../service/certification.service';
 import { Certification } from '../../core/certification';
+import { Role } from 'src/app/core/role';
 
 @Component({
-    selector: 'app-add-role-dialog',
-    templateUrl: './add-role-dialog.component.html',
-    styleUrls: ['./add-role-dialog.component.css']
+    selector: 'app-role-dialog',
+    templateUrl: './role-dialog.component.html',
+    styleUrls: ['./role-dialog.component.css']
 })
-export class AddRoleDialogComponent implements OnInit {
+export class RoleDialogComponent implements OnInit {
 
     formGroup: FormGroup;
+    role: Role = null;
+    mode: string = null;
     availableCerts: Certification[];
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-        public dialogRef: MatDialogRef<AddRoleDialogComponent>, private formBuilder: FormBuilder,
-        private certService: CertificationService) { }
+        public dialogRef: MatDialogRef<RoleDialogComponent>, private formBuilder: FormBuilder,
+        private certService: CertificationService) {
+            if (data && data.role) {
+                this.role = data.role;
+            }
+         }
 
     ngOnInit() {
+        let initRoleName: string;
+        if (this.role) {
+            this.mode = 'Edit';
+            initRoleName = this.role.displayName;
+        } else {
+            this.mode = 'Add';
+            initRoleName = '';
+        }
         this.formGroup = this.formBuilder.group({
-            roleName: ['', Validators.required],
+            roleName: [initRoleName, Validators.required],
             acceptedCerts: this.formBuilder.array([])
         });
         this.certService.getAvailableCertifications().subscribe((certs) => {

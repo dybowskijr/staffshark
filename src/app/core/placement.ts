@@ -39,6 +39,10 @@ export class Placement {
     removeStaffMember(id: string): void {
         this._assignees = this._assignees.filter(role => role !== id);
     }
+
+    clone(): Placement {
+        return new Placement(this.displayName, this.shortName, this.coordinates.x, this.coordinates.y);
+    }
 }
 
 

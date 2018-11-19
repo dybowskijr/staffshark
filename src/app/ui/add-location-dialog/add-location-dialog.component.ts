@@ -28,6 +28,4 @@ export class AddLocationDialogComponent implements OnInit {
     onOkClick(): void {
         this.dialogRef.close({ locationName: this.formGroup.controls.locationName.value });
     }
-
-
 }

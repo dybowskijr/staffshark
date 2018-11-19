@@ -1,0 +1,62 @@
+{"_subVenues": [
+    {
+        "_name": "Pond",
+        "placements": [
+            {
+                "displayName": "Turn 1/2",
+                "shortName": "Turn 1/2",
+                "coordinates": {
+                    "x": 500,
+                    "y": 20,
+                    "z": 0
+                }
+            },
+            {
+                "displayName": "Turn 3/4",
+                "shortName": "Turn 3/4",
+                "coordinates": {
+                    "x": 500,
+                    "y": 120,
+                    "z": 0
+                }
+            },
+            {
+                "displayName": "Turn 5/6",
+                "shortName": "Turn 5/6",
+                "coordinates": {
+                    "x": 500,
+                    "y": 220,
+                    "z": 0
+                }
+            },
+            {
+                "displayName": "Start 1/2",
+                "shortName": "Start 1/2",
+                "coordinates": {
+                    "x": 20,
+                    "y": 20,
+                    "z": 0
+                }
+            },
+            {
+                "displayName": "Start 3/4",
+                "shortName": "Start 3/4",
+                "coordinates": {
+                    "x": 20,
+                    "y": 120,
+                    "z": 0
+                }
+            },
+            {
+                "displayName": "Start 5/6",
+                "shortName": "Start 5/6",
+                "coordinates": {
+                    "x": 20,
+                    "y": 220,
+                    "z": 0
+                }
+            }
+        ]
+    }
+]
+}

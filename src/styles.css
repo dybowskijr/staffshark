@@ -13,3 +13,7 @@
 .unavailable {
     background-color: lightcoral;
 }
+
+.pointer {
+    cursor:pointer;
+}

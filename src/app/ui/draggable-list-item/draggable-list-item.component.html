@@ -2,7 +2,9 @@
     [ngClass]="{'default': true, 'available': staffMember.assignmentStatus == assignmentStatus.Available, 'assigned': staffMember.assignmentStatus == assignmentStatus.Assigned }" 
     role="listitem" id="{{staffMember.id}}"
     [draggable]="isDraggable()" (dragstart)="dragstart_handler($event)">{{ staffMember.displayName }}
-    <mat-icon matTooltip="{{ staffMember.getCertShortList() }}" matTooltipPosition="right">
+    <mat-icon matTooltip="{{ staffMember.getCertShortList() }}" matTooltipPosition="above">
         {{staffMember.hasCertifications() ? 'turned_in' : 'turned_in_not'}}
     </mat-icon>
+    <mat-icon class="clickable" matTooltipPosition="above" (click)="editStaffMemberClick();" matTooltip="Edit">edit</mat-icon>
+    <mat-icon class="clickable" matTooltipPosition="above" (click)="deleteStaffMemberClick();" matTooltip="Delete">highlight_off</mat-icon>
 </mat-list-item>

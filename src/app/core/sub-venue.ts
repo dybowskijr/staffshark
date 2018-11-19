@@ -5,12 +5,14 @@ export class SubVenue {
     private _sessionId?: string;
     private _name: string;
     private _diagram: string;
-    placements: Placement[];
+    placements: Placement[] = [];
 
     constructor(name: string, placements: Placement[], diagram?: string) {
         this._name = name;
         this._diagram = diagram;
-        this.placements = placements;
+        if(placements) {
+            this.placements = placements;
+        }
     }
 
     get name(): string {

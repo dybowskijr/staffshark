@@ -1,4 +1,6 @@
 <mat-list-item [ngClass]="{'default': true}"
     role="listitem" id="{{role.id}}" [draggable]="true" (dragstart)="dragstart_handler($event)">{{ role.displayName }}
     <mat-icon matTooltip="{{ getCertShortList() }}" matTooltipPosition="right">{{role.requiresCertifications ? 'turned_in' : 'turned_in_not'}}</mat-icon>
+    <mat-icon class="clickable" matTooltipPosition="above" (click)="editStaffMemberClick();" matTooltip="Edit">edit</mat-icon>
+    <mat-icon class="clickable" matTooltipPosition="above" (click)="deleteStaffMemberClick();" matTooltip="Delete">highlight_off</mat-icon>
 </mat-list-item>

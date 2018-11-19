@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { MainDisplayComponent } from './ui/main-display/main-display.component';
 import { StaffListComponent } from './ui/staff-list/staff-list.component';
 import { MatSidenavModule, MatListModule, MatRadioModule, MatButtonModule, MatIconModule, MatCardModule,
-         MatDialogModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
+         MatDialogModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatTooltipModule,
+        MatToolbarModule,
+        MAT_DIALOG_DATA} from '@angular/material';
 import { DraggableListItemComponent } from './ui/draggable-list-item/draggable-list-item.component';
 import { VenuePositionLayoutComponent } from './ui/venue-position-layout/venue-position-layout.component';
 import { VenuePositionComponent } from './ui/venue-position/venue-position.component';
@@ -18,9 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WizardDialogComponent } from './ui/wizard-dialog/wizard-dialog.component';
 import { AddSessionDialogComponent } from './ui/add-session-dialog/add-session-dialog.component';
 import { SessionSubVenueDisplayComponent } from './ui/session-sub-venue-display/session-sub-venue-display.component';
-import { AddRoleDialogComponent } from './ui/add-role-dialog/add-role-dialog.component';
-import { AddStaffMemberDialogComponent } from './ui/add-staff-member-dialog/add-staff-member-dialog.component';
+import { RoleDialogComponent } from './ui/role-dialog/role-dialog.component';
+import { StaffMemberDialogComponent } from './ui/staff-member-dialog/staff-member-dialog.component';
 import { AddLocationDialogComponent } from './ui/add-location-dialog/add-location-dialog.component';
+import { JsonPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,26 +40,26 @@ import { AddLocationDialogComponent } from './ui/add-location-dialog/add-locatio
     WizardDialogComponent,
     AddSessionDialogComponent,
     SessionSubVenueDisplayComponent,
-    AddRoleDialogComponent,
-    AddStaffMemberDialogComponent,
+    RoleDialogComponent,
+    StaffMemberDialogComponent,
     AddLocationDialogComponent
   ],
     imports: [
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
         MatRadioModule, MatButtonModule, MatIconModule, MatCardModule, MatDialogModule,
         MatFormFieldModule, FormsModule, MatInputModule, ReactiveFormsModule, MatTabsModule,
-        MatCheckboxModule, MatTooltipModule
+        MatCheckboxModule, MatTooltipModule, MatToolbarModule
 
     ],
     exports: [
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
         MatRadioModule, MatButtonModule, MatIconModule, MatCardModule, MatDialogModule,
         MatFormFieldModule, MatInputModule, MatTabsModule,
-        MatCheckboxModule, MatTooltipModule
+        MatCheckboxModule, MatTooltipModule, MatToolbarModule
     ],
-  providers: [],
+  providers: [JsonPipe, {provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent],
     entryComponents: [AddTypeDialogComponent, WizardDialogComponent, AddSessionDialogComponent,
-        AddRoleDialogComponent, AddStaffMemberDialogComponent, AddLocationDialogComponent]
+        RoleDialogComponent, StaffMemberDialogComponent, AddLocationDialogComponent]
 })
 export class AppModule { }

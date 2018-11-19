@@ -24,3 +24,7 @@
 .mat-card > .mat-card-actions:last-child {
     margin-bottom: -4px;
 }
+
+span.unqualified {
+    color: red;
+}

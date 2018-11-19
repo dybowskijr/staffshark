@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StaffingService } from '../../service/staffing.service';
 import { StaffMember } from '../../core/staff-member';
-import { MatDialog } from '@angular/material';
-import { AddStaffMemberDialogComponent } from '../add-staff-member-dialog/add-staff-member-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { StaffMemberDialogComponent } from '../staff-member-dialog/staff-member-dialog.component';
 
 @Component({
   selector: 'app-staff-list',
@@ -28,8 +28,8 @@ export class StaffListComponent implements OnInit {
         return this._staff;
     }
 
-    addStaffmember(): void {
-        const dialogRef = this.dialog.open(AddStaffMemberDialogComponent);
+    addStaffMemberClick(): void {
+        const dialogRef = this.dialog.open(StaffMemberDialogComponent);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this._staff.push(new StaffMember(result.displayName, result.displayName, result.certifications));
@@ -37,4 +37,8 @@ export class StaffListComponent implements OnInit {
             }
         });
     }
+    deleteStaffMember(e) {
+        this._staff.splice(this._staff.indexOf(e), 1);
+    }
+
 }

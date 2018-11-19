@@ -3,11 +3,12 @@
     [style.top.px]="placement.coordinates.y" [style.left.px]="placement.coordinates.x" (drop)="drop_handler($event);" 
     (dragover)="dragover_handler($event);"
     (dragstart)="dragstart_handler($event);"
+    (dragend)="dragend_handler($event);"
     [draggable]="true">
     <mat-card-content>
         <div>Assignee: <span *ngIf="assignee">{{ assignee.displayName }}</span><br />
             Location: <span *ngIf="placement">{{ placement.displayName }}</span><br />
-            Role: <span *ngIf="role">{{role.displayName}}</span></div>
+            <span [ngClass]="{'unqualified': !isQualified()}">Role: </span><span *ngIf="role">{{role.displayName}}</span></div>
     </mat-card-content>
 <mat-card-actions>
     <mat-icon (click)="clear($event);" title="Clear Assignee">replay</mat-icon>

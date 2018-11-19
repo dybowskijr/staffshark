@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from '../../core/role';
 import { RoleService } from '../../service/role.service';
 import { MatDialog } from '@angular/material';
-import { AddRoleDialogComponent } from '../add-role-dialog/add-role-dialog.component';
+import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 
 @Component({
   selector: 'app-role-list',
@@ -27,7 +27,7 @@ export class RoleListComponent implements OnInit {
     }
 
     addRole(): void {
-        const dialogRef = this.dialog.open(AddRoleDialogComponent);
+        const dialogRef = this.dialog.open(RoleDialogComponent);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this._roles.push(new Role(result.roleName, result.roleName, result.acceptableCerts));

@@ -6,19 +6,37 @@ export enum AssignmentStatus {Unavailable, Available, Assigned};
 export class StaffMember {
 
     private static  nextId = 1;
-    private _id?: string;
+    _id?: string;
     name: string;
     displayName: string;
-    private _certifications?: Certification[];
+    private _certifications: Certification[] = [];
     private _assignmentStatus: AssignmentStatus = AssignmentStatus.Available;
 
-    constructor(name: string, displayName: string, certifications: Certification[] = null) {
+    constructor(name: string, displayName: string, certifications: Certification[] = null, id: string = null) {
         this.name = name;
         this.displayName = displayName;
-        this.certifications = certifications;
+        if (certifications && certifications.length > 0) {
+            this._certifications = certifications;
+        }
         this._id = StaffMember.nextId.toString();
-        StaffMember.nextId++;
+        if (!id) {
+            StaffMember.nextId++;
+        } else {
+            this._id = id;
+        }
     }
+
+    update(name: string, displayName: string, certifications: Certification[] | null) {
+        this.name = name;
+        this.displayName = displayName;
+        this._certifications = certifications;
+    }
+
+    clone(): StaffMember {
+        const clonedCerts = this._certifications.map(cert => cert.clone());
+        return new StaffMember(this.name, this.displayName, clonedCerts, this._id);
+    }
+
 
     public get certifications(): Certification[] {
         return this._certifications;
@@ -44,11 +62,23 @@ export class StaffMember {
     }
 
     getCertShortList(): string {
-        let retVal = 'None';
-        if(this._certifications) {
-            retVal = this._certifications.map( cert => cert.shortName).join(', ');
+        let retval = 'None';
+        if (this._certifications && this._certifications.length > 0) {
+            retval = this._certifications.map( cert => cert.shortName).join(', ');
         }
-        return retVal;
+        return retval;
     }
+
+    isQualified(requiredCertifications: Certification[]): boolean {
+        let retval = false;
+        if (requiredCertifications == null || requiredCertifications.length <= 0) {
+            retval = true;
+
+        } else {
+            retval = this.certifications.some(cert => requiredCertifications.includes(cert));
+        }
+        return retval;
+    }
+
 
 }

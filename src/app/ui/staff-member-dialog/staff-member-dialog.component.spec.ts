@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddRoleDialogComponent } from './add-role-dialog.component';
+import { StaffMemberDialogComponent } from './staff-member-dialog.component';
 
-describe('AddRoleDialogComponent', () => {
-  let component: AddRoleDialogComponent;
-  let fixture: ComponentFixture<AddRoleDialogComponent>;
+describe('AddStaffMemberDialogComponent', () => {
+  let component: StaffMemberDialogComponent;
+  let fixture: ComponentFixture<StaffMemberDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRoleDialogComponent ]
+      declarations: [ StaffMemberDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddRoleDialogComponent);
+    fixture = TestBed.createComponent(StaffMemberDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
