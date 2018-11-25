@@ -4,11 +4,11 @@
     </div>
 
     <!-- Sessions with the session having 0-n subVenues  -->
-    <mat-tab-group style="display: inline-block; border: thin solid black" [(selectedIndex)]="selectedSession"
+    <mat-tab-group style="display: inline-block; border: thin solid black" [selectedIndex]="selectedSession"
         (selectedTabChange)="addSessionClick($event);">
         <mat-tab [label]="session.name"*ngFor="let session of sessions">
-            <mat-tab-group (selectedTabChange)="addSubVenueClick($event);">
-                <mat-tab label="{{subVenue.name}}" *ngFor="let subVenue of session.subVenues">
+            <mat-tab-group (selectedTabChange)="addSubVenueClick($event);" [(selectedIndex)]="selectedSubVenue">
+                <mat-tab [label]="subVenue.name" *ngFor="let subVenue of session.subVenues">
                     <app-venue-position-layout [subVenue]="subVenue"></app-venue-position-layout>
                 </mat-tab>
                 <mat-tab label="Add Location">

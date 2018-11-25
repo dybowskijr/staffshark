@@ -22,4 +22,8 @@ export class SubVenue {
     get diagram(): string {
         return this._diagram;
     }
+
+    set name(n: string) {
+        this._name = n;
+    }
 }

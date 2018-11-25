@@ -1,8 +1,13 @@
 <mat-toolbar color="primary" style="height: 40px">
-        <span>Custom Toolbar </span><mat-icon class="pointer" matTooltip="Add Position" (click)="addPosition($event)">add_circle</mat-icon>
+        <span></span>
+        <mat-icon class="pointer" matTooltip="Add Position" (click)="addPosition($event)">add_circle</mat-icon>
+        <span></span>
+        <mat-icon class="pointer" matTooltip="Edit This Location" (click)="editSubVenue($event)">edit</mat-icon>
 </mat-toolbar>
-<div id="venue_0" class="main-area" [style.background-image]="bgImage" (drop)="drop_handler($event);" (dragover)="dragover_handler($event);">
+<div id="venue_0" class="main-area" [style.background-image]="bgImage" (drop)="drop_handler($event);"
+    (dragover)="dragover_handler($event);">
 
     <app-venue-position 
-        *ngFor="let placement of subVenue.placements" [placement]="placement"></app-venue-position>
+        *ngFor="let placement of subVenue.placements" [placement]="placement" (deletePlacement)="deletePlacement($event);">
+    </app-venue-position>
 </div>

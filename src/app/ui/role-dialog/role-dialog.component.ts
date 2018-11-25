@@ -40,8 +40,13 @@ export class RoleDialogComponent implements OnInit {
         });
         this.certService.getAvailableCertifications().subscribe((certs) => {
             this.availableCerts = certs;
-            const formArray = this.formGroup.get('acceptedCerts') as FormArray;
-            this.availableCerts.forEach(cert => formArray.push(new FormControl(false)));
+            const formArray = <FormArray>this.formGroup.get('acceptedCerts');
+
+            certs.forEach(cert => {
+                const hasCert = this.role && this.role.requiredCertifications &&
+                    this.role.requiredCertifications.some( roleCert => roleCert.name === cert.name);
+                formArray.push(new FormControl(hasCert === null ? false : hasCert));
+            });
         });
     }
 

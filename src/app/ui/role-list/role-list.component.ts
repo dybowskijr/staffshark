@@ -36,4 +36,8 @@ export class RoleListComponent implements OnInit {
         });
     }
 
+    deleteRole(e) {
+        this._roles.splice(this._roles.indexOf(e), 1);
+    }
+
 }

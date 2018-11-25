@@ -8,13 +8,26 @@ export class Role {
     private _name: string;
     private _displayName: string;
 
-    requiredCertifications: Certification[];
+    requiredCertifications: Certification[] = [];
 
-    constructor(name: string, displayName: string, requiredCertifications: Certification[]) {
+    constructor(name: string, displayName: string, requiredCertifications: Certification[] | null) {
         this._id = Role.nextId++;
         this._name = name;
         this._displayName = displayName;
-        this.requiredCertifications = requiredCertifications;
+        if (requiredCertifications) {
+            this.requiredCertifications = requiredCertifications;
+        }
+    }
+
+    clone(): Role {
+        const clonedCerts: Certification[] = this.requiredCertifications.map( c => c.clone());
+        return new Role(this._name, this._displayName, clonedCerts);
+    }
+
+    update(name: string, displayName: string, requiredCertifications: Certification[] | null) {
+        this._name = name;
+        this._displayName = displayName;
+        this.requiredCertifications = (requiredCertifications) ? requiredCertifications : [];
     }
 
     public get id(): string {

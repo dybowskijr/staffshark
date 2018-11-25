@@ -41,7 +41,6 @@ export class DraggableListItemComponent implements OnInit {
     }
 
     deleteStaffMemberClick() {
-        console.log('Click Start');
         this.delete.emit(this.staffMember);
     }
 }

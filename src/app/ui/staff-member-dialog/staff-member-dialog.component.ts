@@ -45,11 +45,10 @@ export class StaffMemberDialogComponent implements OnInit {
         this.certService.getAvailableCertifications().subscribe((certs) => {
             this.availableCerts = certs;
             const formArray = <FormArray>this.formGroup.get('formCerts');
-            console.log('Got here - pre this.availableCerts.forEach; staffMember: ' + JSON.stringify(this.staffMember));
+            // console.log('Got here - pre this.availableCerts.forEach; staffMember: ' + JSON.stringify(this.staffMember));
             certs.forEach(cert => {
                 const hasCert = this.staffMember && this.staffMember.certifications &&
                     this.staffMember.certifications.some(memberCert => memberCert.name === cert.name);
-                console.log('prepush');
                 formArray.push(new FormControl(hasCert == null ? false : hasCert));
             });
         });

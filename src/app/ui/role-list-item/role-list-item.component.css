@@ -2,3 +2,7 @@
     border: thin solid navy;
     border-collapse: collapse;
 }
+
+.clickable {
+    cursor: pointer;
+}

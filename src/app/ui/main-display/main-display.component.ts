@@ -23,7 +23,8 @@ export class MainDisplayComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.occasionService.getOccasion('changeme').subscribe(o => { this._occasion = o; console.log('Oh Yeah!'); });
+        this.occasionService.getOccasion('changeme').subscribe(o => {
+            this._occasion = o; this.selectedSession = 0; });
     }
 
     get sessions(): Session[] {
@@ -31,12 +32,14 @@ export class MainDisplayComponent implements OnInit {
     }
 
     addSessionClick(event: MatTabChangeEvent): void {
+        console.log('Session Tab: ' + this.selectedSession + 'Event.tab: ' + event.tab.position);
         if (event.tab.textLabel === 'Add Session') {
             const dialogRef = this.dialog.open(AddSessionDialogComponent);
             dialogRef.afterClosed().subscribe(result => {
                 if (result) {
                     this._occasion._sessions.push(new Session(result.sessionName));
-                    // this.selectedSession = this._occasion._sessions.length - 1;
+                    this.selectedSession = 0; // TODO: tab count not the same as occasions
+                    console.log('Session Tab Final: ' + this.selectedSession + '; ' + this._occasion._sessions.length);
                 }
             });
         }

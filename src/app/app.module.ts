@@ -24,6 +24,7 @@ import { RoleDialogComponent } from './ui/role-dialog/role-dialog.component';
 import { StaffMemberDialogComponent } from './ui/staff-member-dialog/staff-member-dialog.component';
 import { AddLocationDialogComponent } from './ui/add-location-dialog/add-location-dialog.component';
 import { JsonPipe } from '@angular/common';
+import { EditSubVenueDialogComponent } from './ui/edit-subvenue-dialog.component/edit-subvenue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { JsonPipe } from '@angular/common';
     SessionSubVenueDisplayComponent,
     RoleDialogComponent,
     StaffMemberDialogComponent,
-    AddLocationDialogComponent
+    AddLocationDialogComponent,
+    EditSubVenueDialogComponent
   ],
     imports: [
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
@@ -60,6 +62,6 @@ import { JsonPipe } from '@angular/common';
   providers: [JsonPipe, {provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent],
     entryComponents: [AddTypeDialogComponent, WizardDialogComponent, AddSessionDialogComponent,
-        RoleDialogComponent, StaffMemberDialogComponent, AddLocationDialogComponent]
+        RoleDialogComponent, StaffMemberDialogComponent, AddLocationDialogComponent, EditSubVenueDialogComponent]
 })
 export class AppModule { }

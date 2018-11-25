@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { StaffMember, AssignmentStatus } from '../../core/staff-member';
 import { Role } from '../../core/role';
 import { StaffingService } from '../../service/staffing.service';
@@ -13,6 +13,7 @@ import { RoleService } from '../../service/role.service';
 export class VenuePositionComponent implements OnInit {
 
     @Input() placement: Placement;
+    @Output() deletePlacement: EventEmitter<any> = new EventEmitter();
 
     private _assignee?: StaffMember = null;
     private _role?: Role = null;
@@ -34,19 +35,7 @@ export class VenuePositionComponent implements OnInit {
 
     dragover_handler(ev) {
         ev.preventDefault();
-       // const dragId = ev.dataTransfer.getData('text/plain');
         ev.dataTransfer.dropEffect = 'move';
-        // console.log('dragover: ' + ev.dataTransfer.dropEffect  + '; role: ' + JSON.stringify(this._role));
-        // if (dragId.split('_')[0] === 'staffmember') {
-        //     this.staffingService.getStaffMember(dragId).subscribe(
-        //         sm => {
-        //             ev.dataTransfer.dropEffect = (this._role == null || sm.isQualified(this._role.requiredCertifications))
-        //                 ? 'move' : 'none';
-        //             console.log('subscribe sm: ' + JSON.stringify(this._role) + '; role: ' + JSON.stringify(this._role));
-
-        //         }
-        //     );
-        // }
     }
 
     dragend_handler(ev) {
@@ -100,7 +89,7 @@ export class VenuePositionComponent implements OnInit {
         return this._role;
     }
 
-    private clear() {
+    clearClick() {
         if (this._assignee) {
             this._assignee.assignmentStatus = AssignmentStatus.Available;
             this._assignee = null;
@@ -109,8 +98,8 @@ export class VenuePositionComponent implements OnInit {
             this._role = null;
         }
     }
-
-    deleteClick(): void {
-        this.clear();
+    deleteClick() {
+        this.clearClick();
+        this.deletePlacement.emit(this.placement);
     }
 }
