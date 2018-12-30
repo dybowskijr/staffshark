@@ -6,6 +6,7 @@ import { MatTabChangeEvent, MatDialog } from '@angular/material';
 import { AddSessionDialogComponent } from '../add-session-dialog/add-session-dialog.component';
 import { AddLocationDialogComponent } from '../add-location-dialog/add-location-dialog.component';
 import { SubVenue } from '../../core/sub-venue';
+import { ControlListComponent } from '../control-list/control-list.component';
 
 @Component({
     selector: 'app-main-display',
@@ -39,7 +40,6 @@ export class MainDisplayComponent implements OnInit {
                 if (result) {
                     this._occasion._sessions.push(new Session(result.sessionName));
                     this.selectedSession = 0; // TODO: tab count not the same as occasions
-                    console.log('Session Tab Final: ' + this.selectedSession + '; ' + this._occasion._sessions.length);
                 }
             });
         }

@@ -24,6 +24,10 @@ export class OccasionService {
         return of( this._occasions.find(() => true));
     }
 
+    getMyOccasions(userid: string): Observable<Occasion[]> {
+        return of( this._occasions);
+    }
+
     private mockOccasion(): Occasion[] {
 
         const placements = [
@@ -47,13 +51,9 @@ export class OccasionService {
             new Placement('OOF', 'Order of Finish', 500, 200)
         ];
 
-
-
-
         const subVenues = [new SubVenue('Pool', placements, '/assets/images/basic-pool.png'), new SubVenue('Deck Crew', placements2)];
         const subVenues2 = [new SubVenue('Pond', placements3)];
         const sessions = [new Session('Friday Evening', subVenues), new Session('Saturday Morning', subVenues2)];
-        console.info('Session Array: ' + this.jsonPipe.transform(sessions));
-        return [ new Occasion('Polar Bear', sessions)];
+        return [ new Occasion('Polar Bear', sessions), new Occasion('Frenzy', sessions)];
     }
 }

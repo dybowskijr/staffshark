@@ -5,10 +5,10 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MainDisplayComponent } from './ui/main-display/main-display.component';
 import { StaffListComponent } from './ui/staff-list/staff-list.component';
-import { MatSidenavModule, MatListModule, MatRadioModule, MatButtonModule, MatIconModule, MatCardModule,
+import { MatSidenavModule, MatRadioModule, MatButtonModule, MatIconModule, MatCardModule,
          MatDialogModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatTooltipModule,
-        MatToolbarModule,
-        MAT_DIALOG_DATA} from '@angular/material';
+        MatToolbarModule, MatOptionModule, MatSelectModule, MAT_DIALOG_DATA} from '@angular/material';
+import { MatListModule } from '@angular/material/list';
 import { DraggableListItemComponent } from './ui/draggable-list-item/draggable-list-item.component';
 import { VenuePositionLayoutComponent } from './ui/venue-position-layout/venue-position-layout.component';
 import { VenuePositionComponent } from './ui/venue-position/venue-position.component';
@@ -17,7 +17,6 @@ import { DraggableGenericListItemComponent } from './ui/draggable-generic-list-i
 import { RoleListItemComponent } from './ui/role-list-item/role-list-item.component';
 import { AddTypeDialogComponent } from './ui/add-type-dialog/add-type-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WizardDialogComponent } from './ui/wizard-dialog/wizard-dialog.component';
 import { AddSessionDialogComponent } from './ui/add-session-dialog/add-session-dialog.component';
 import { SessionSubVenueDisplayComponent } from './ui/session-sub-venue-display/session-sub-venue-display.component';
 import { RoleDialogComponent } from './ui/role-dialog/role-dialog.component';
@@ -25,6 +24,7 @@ import { StaffMemberDialogComponent } from './ui/staff-member-dialog/staff-membe
 import { AddLocationDialogComponent } from './ui/add-location-dialog/add-location-dialog.component';
 import { JsonPipe } from '@angular/common';
 import { EditSubVenueDialogComponent } from './ui/edit-subvenue-dialog.component/edit-subvenue-dialog.component';
+import { ControlListComponent } from './ui/control-list/control-list.component';
 
 @NgModule({
   declarations: [
@@ -38,30 +38,30 @@ import { EditSubVenueDialogComponent } from './ui/edit-subvenue-dialog.component
     DraggableGenericListItemComponent,
     RoleListItemComponent,
     AddTypeDialogComponent,
-    WizardDialogComponent,
     AddSessionDialogComponent,
     SessionSubVenueDisplayComponent,
     RoleDialogComponent,
     StaffMemberDialogComponent,
     AddLocationDialogComponent,
-    EditSubVenueDialogComponent
+    EditSubVenueDialogComponent,
+    ControlListComponent
   ],
     imports: [
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
         MatRadioModule, MatButtonModule, MatIconModule, MatCardModule, MatDialogModule,
         MatFormFieldModule, FormsModule, MatInputModule, ReactiveFormsModule, MatTabsModule,
-        MatCheckboxModule, MatTooltipModule, MatToolbarModule
+        MatCheckboxModule, MatTooltipModule, MatToolbarModule, MatOptionModule, MatSelectModule
 
     ],
     exports: [
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
         MatRadioModule, MatButtonModule, MatIconModule, MatCardModule, MatDialogModule,
-        MatFormFieldModule, MatInputModule, MatTabsModule,
-        MatCheckboxModule, MatTooltipModule, MatToolbarModule
+        MatFormFieldModule, MatInputModule, MatTabsModule, MatOptionModule,
+        MatCheckboxModule, MatTooltipModule, MatToolbarModule, MatSelectModule
     ],
   providers: [JsonPipe, {provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent],
-    entryComponents: [AddTypeDialogComponent, WizardDialogComponent, AddSessionDialogComponent,
+    entryComponents: [AddTypeDialogComponent, AddSessionDialogComponent,
         RoleDialogComponent, StaffMemberDialogComponent, AddLocationDialogComponent, EditSubVenueDialogComponent]
 })
 export class AppModule { }

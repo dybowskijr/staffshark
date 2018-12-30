@@ -17,5 +17,15 @@ export class Occasion {  // this is the meet, match tournament, etc
         this._id = 'occasion_' + Occasion.nextId++;
     }
 
+    getSession(id: string): Session {
+        let retval: any;
+        if (this._sessions && this._sessions.length > 0) {
+            retval = this._sessions.find(s => s._id === id);
+        }
+        return retval;
+    }
 
+    get name(): string {
+        return this._name;
+    }
 }

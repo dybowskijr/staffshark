@@ -1,0 +1,31 @@
+<mat-list>
+    <mat-list-item role="listitem" id="myOccasion">
+        <mat-form-field>
+            <mat-select placeholder="Occasion" (selectionChange)="occasionChange($event)">
+                <mat-option *ngFor="let occasion of _occasions" [value]="occasion._id">    
+                    {{occasion.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item role="listitem" id="mySession" *ngIf="_occasion">
+        <mat-form-field>
+            <mat-select placeholder="Session" (selectionChange)="sessionChange($event)">
+                <mat-option *ngFor="let session of _occasion._sessions" [value]="session._id">
+                    {{session.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-list-item>
+
+    <mat-list-item role="listitem" id="myLocation" *ngIf="_session">
+        <mat-form-field>
+            <mat-select placeholder="Location" (selectionChange)="subVenueChange($event)">
+                <mat-option *ngFor="let subVenue of _session._subVenues" [value]="subVenue._id">
+                    {{subVenue.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>    
+    </mat-list-item>
+</mat-list>
