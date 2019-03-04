@@ -2,7 +2,7 @@ import { Session } from './session';
 import { SubVenue } from './sub-venue';
 
 export class Occasion {  // this is the meet, match tournament, etc
-    private static nextId: 0;
+    private static nextId = 0;
 
     _id: string;
     private _name: string;
@@ -27,5 +27,11 @@ export class Occasion {  // this is the meet, match tournament, etc
 
     get name(): string {
         return this._name;
+    }
+
+    toString(): string {
+        const retval = 'id: ' + this._id + '\n' + this._name;
+
+        return retval;
     }
 }

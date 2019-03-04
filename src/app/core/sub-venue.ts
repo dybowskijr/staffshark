@@ -20,6 +20,10 @@ export class SubVenue {
         }
     }
 
+    toString(): string {
+        return 'SubVenue -- id: ' + this._id + '; name: ' + this._name;
+    }
+
     get name(): string {
         return this._name;
     }

@@ -19,6 +19,7 @@ export class MainDisplayComponent implements OnInit {
     //  TODO: make sure tab is set to the added session tab.
     private _occasion: Occasion;
     selectedSession: number;
+    displaySubVenue: SubVenue;
 
     constructor(private occasionService: OccasionService, public dialog: MatDialog) {
     }
@@ -54,5 +55,10 @@ export class MainDisplayComponent implements OnInit {
                 }
             });
         }
+    }
+
+    setDisplayedSubVenue(subVenue: SubVenue) {
+        this.displaySubVenue = subVenue;
+        console.log('OK: ' + this.displaySubVenue.toString());
     }
 }
