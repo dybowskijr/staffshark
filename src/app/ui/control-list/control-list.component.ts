@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { OccasionService } from 'src/app/service/occasion.service';
 import { Occasion } from 'src/app/core/occasion';
 import { MatSelectChange } from '@angular/material';
@@ -12,8 +12,10 @@ import { SubVenue } from 'src/app/core/sub-venue';
 })
 export class ControlListComponent implements OnInit {
 
-    private _occasions: Occasion[];
+    @Output() selectedSubVenue: EventEmitter<SubVenue> = new EventEmitter();
 
+
+    private _occasions: Occasion[];
     private _occasion: Occasion = null;
     private _session: Session;
     private _subVenue: SubVenue;
@@ -45,6 +47,7 @@ export class ControlListComponent implements OnInit {
 
     subVenueChange(event: MatSelectChange) {
         this._subVenue = this._session.getSubVenue(event.value);
-        console.log('subVenue: ' + event.value);
+        console.log('subVenueId lookup: ' + event.value + '; retrieved subVenue: ' + this._subVenue.toString());
+        this.selectedSubVenue.emit(this._subVenue);
     }
 }

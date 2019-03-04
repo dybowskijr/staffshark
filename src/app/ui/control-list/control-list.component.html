@@ -1,15 +1,15 @@
-<mat-list>
-    <mat-list-item role="listitem" id="myOccasion">
+<mat-grid-list cols="3" rowHeight="70px">
+    <mat-grid-tile role="listitem" id="myOccasion">
         <mat-form-field>
             <mat-select placeholder="Occasion" (selectionChange)="occasionChange($event)">
                 <mat-option *ngFor="let occasion of _occasions" [value]="occasion._id">    
                     {{occasion.name}}
                 </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-list-item>
+            </mat-select> 
+        </mat-form-field>     
+    </mat-grid-tile>
 
-    <mat-list-item role="listitem" id="mySession" *ngIf="_occasion">
+    <mat-grid-tile role="listitem" id="mySession" *ngIf="_occasion">
         <mat-form-field>
             <mat-select placeholder="Session" (selectionChange)="sessionChange($event)">
                 <mat-option *ngFor="let session of _occasion._sessions" [value]="session._id">
@@ -17,9 +17,9 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </mat-list-item>
+    </mat-grid-tile>
 
-    <mat-list-item role="listitem" id="myLocation" *ngIf="_session">
+    <mat-grid-tile role="listitem" id="myLocation" *ngIf="_session">
         <mat-form-field>
             <mat-select placeholder="Location" (selectionChange)="subVenueChange($event)">
                 <mat-option *ngFor="let subVenue of _session._subVenues" [value]="subVenue._id">
@@ -27,5 +27,5 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>    
-    </mat-list-item>
-</mat-list>
+    </mat-grid-tile>
+</mat-grid-list>

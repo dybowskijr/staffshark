@@ -7,7 +7,7 @@ import { MainDisplayComponent } from './ui/main-display/main-display.component';
 import { StaffListComponent } from './ui/staff-list/staff-list.component';
 import { MatSidenavModule, MatRadioModule, MatButtonModule, MatIconModule, MatCardModule,
          MatDialogModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatTooltipModule,
-        MatToolbarModule, MatOptionModule, MatSelectModule, MAT_DIALOG_DATA} from '@angular/material';
+        MatToolbarModule, MatOptionModule, MatSelectModule, MAT_DIALOG_DATA, MatGridListModule} from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { DraggableListItemComponent } from './ui/draggable-list-item/draggable-list-item.component';
 import { VenuePositionLayoutComponent } from './ui/venue-position-layout/venue-position-layout.component';
@@ -50,7 +50,8 @@ import { ControlListComponent } from './ui/control-list/control-list.component';
         BrowserModule, BrowserAnimationsModule, MatSidenavModule, MatListModule,
         MatRadioModule, MatButtonModule, MatIconModule, MatCardModule, MatDialogModule,
         MatFormFieldModule, FormsModule, MatInputModule, ReactiveFormsModule, MatTabsModule,
-        MatCheckboxModule, MatTooltipModule, MatToolbarModule, MatOptionModule, MatSelectModule
+        MatCheckboxModule, MatTooltipModule, MatToolbarModule, MatOptionModule, MatSelectModule,
+        MatGridListModule
 
     ],
     exports: [
